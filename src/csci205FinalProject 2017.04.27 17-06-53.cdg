@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="csci205FinalProject">
+  <ClassDiagramComponents>
+    <Class name="Asteroid" package="Models" visibility="public" xPosition="361.0" yPosition="216.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ImageView" name="imageView"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="move" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Ship" package="Models" visibility="public" xPosition="398.0" yPosition="482.0">
+      <Fields>
+        <Field name="acc" type="double" visibility="private"/>
+        <Field name="superMeter" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ImageView" name="image"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="move" returnType="void" visibility="public"/>
+        <Method name="keepMoving" returnType="void" visibility="public"/>
+        <Method name="slowDown" returnType="void" visibility="public"/>
+        <Method name="resetAcc" returnType="void" visibility="public"/>
+        <Method name="shoot" returnType="Bullet" visibility="public"/>
+        <Method name="getSuperMeter" returnType="int" visibility="public"/>
+        <Method name="incrementSuperMeter" returnType="void" visibility="public">
+          <Argument type="int" name="superNum"/>
+        </Method>
+        <Method name="useSuper" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Bullet" package="Models" visibility="public" xPosition="658.0" yPosition="70.0">
+      <Fields>
+        <Field name="distanceTravelled" type="double" visibility="private"/>
+        <Field name="maxDistance" type="double" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ImageView" name="imageView"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="update" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="GamePiece" package="Models" visibility="public" xPosition="52.0" yPosition="339.0">
+      <Fields>
+        <Field name="width" type="double" visibility="protected"/>
+        <Field name="height" type="double" visibility="protected"/>
+        <Field name="xPos" type="double" visibility="protected"/>
+        <Field name="yPos" type="double" visibility="protected"/>
+        <Field name="imageView" type="Image" visibility="protected"/>
+        <Field name="changeX" type="double" visibility="protected"/>
+        <Field name="changeY" type="double" visibility="protected"/>
+        <Field name="view" type="ImageView" visibility="protected"/>
+        <Field name="velocity" type="Point2D" visibility="protected"/>
+        <Field name="alive" type="boolean" visibility="protected"/>
+        <Field name="imageFile" type="String" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="ImageView" name="view"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="isColliding" returnType="boolean" visibility="public">
+          <Argument type="GamePiece" name="piece"/>
+        </Method>
+        <Method name="update" returnType="void" visibility="public"/>
+        <Method name="updateUI" returnType="void" visibility="public"/>
+        <Method name="getDirectionX" returnType="double" visibility="public"/>
+        <Method name="getDirectionY" returnType="double" visibility="public"/>
+        <Method name="setVelocity" returnType="void" visibility="public">
+          <Argument type="Point2D" name="v"/>
+        </Method>
+        <Method name="getVelocity" returnType="Point2D" visibility="public"/>
+        <Method name="setView" returnType="void" visibility="public">
+          <Argument type="ImageView" name="v"/>
+        </Method>
+        <Method name="getRotate" returnType="double" visibility="public"/>
+        <Method name="rotateRight" returnType="void" visibility="public"/>
+        <Method name="rotateLeft" returnType="void" visibility="public"/>
+        <Method name="getPieceWidth" returnType="double" visibility="public"/>
+        <Method name="getPieceHeight" returnType="double" visibility="public"/>
+        <Method name="setPieceWidth" returnType="void" visibility="public">
+          <Argument type="double" name="w"/>
+        </Method>
+        <Method name="setPieceHeight" returnType="void" visibility="public">
+          <Argument type="double" name="h"/>
+        </Method>
+        <Method name="getXPos" returnType="double" visibility="public"/>
+        <Method name="getYPos" returnType="double" visibility="public"/>
+        <Method name="getView" returnType="ImageView" visibility="public"/>
+        <Method name="isAlive" returnType="boolean" visibility="public"/>
+        <Method name="isNotAlive" returnType="boolean" visibility="public"/>
+        <Method name="setAlive" returnType="void" visibility="public">
+          <Argument type="boolean" name="aliveOrDead"/>
+        </Method>
+        <Method name="getImageView" returnType="Image" visibility="public"/>
+        <Method name="setPos" returnType="void" visibility="public">
+          <Argument type="double" name="xPos"/>
+          <Argument type="double" name="yPos"/>
+        </Method>
+        <Method name="setXPos" returnType="void" visibility="public">
+          <Argument type="double" name="i"/>
+        </Method>
+        <Method name="setYPos" returnType="void" visibility="public">
+          <Argument type="double" name="i"/>
+        </Method>
+        <Method name="setImageFile" returnType="void" visibility="public">
+          <Argument type="String" name="fileName"/>
+        </Method>
+        <Method name="getImageFile" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="asteroidController" package="SceneBuilder" visibility="public" xPosition="969.0" yPosition="278.0">
+      <Fields>
+        <Field name="bullets" type="ArrayList&lt;Bullet&gt;" visibility="private"/>
+        <Field name="asteroids" type="ArrayList&lt;Asteroid&gt;" visibility="private"/>
+        <Field name="ship" type="Ship" visibility="private"/>
+        <Field name="right" type="boolean" visibility="package"/>
+        <Field name="up" type="boolean" visibility="package"/>
+        <Field name="left" type="boolean" visibility="package"/>
+        <Field name="shoot" type="boolean" visibility="package"/>
+        <Field name="isPaused" type="boolean" visibility="package"/>
+        <Field name="gameOn" type="boolean" visibility="package"/>
+        <Field name="score" type="int" visibility="private"/>
+        <Field name="maxAsteroids" type="int" visibility="private"/>
+        <Field name="release" type="boolean" visibility="private"/>
+        <Field name="sizes" type="int[]" visibility="private"/>
+        <Field name="superCount" type="int" visibility="package"/>
+        <Field name="btnPause" type="Button" visibility="private"/>
+        <Field name="lblScore" type="Label" visibility="private"/>
+        <Field name="superNum" type="Label" visibility="private"/>
+        <Field name="games" type="Canvas" visibility="private"/>
+        <Field name="gc" type="GraphicsContext" visibility="private"/>
+        <Field name="model" type="asteroidModel" visibility="private"/>
+        <Field name="aTimer" type="AnimationTimer" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="btnPauseMethod" returnType="void" visibility="package">
+          <Argument type="MouseEvent" name="event"/>
+        </Method>
+        <Method name="getGameOn" returnType="boolean" visibility="public"/>
+        <Method name="getScore" returnType="int" visibility="public"/>
+        <Method name="getPaused" returnType="boolean" visibility="public"/>
+        <Method name="instantiateShip" returnType="void" visibility="public">
+          <Argument type="Ship" name="theShip"/>
+          <Argument type="asteroidModel" name="theModel"/>
+        </Method>
+        <Method name="addBullet" returnType="void" visibility="public">
+          <Argument type="Bullet" name="bullet"/>
+        </Method>
+        <Method name="addAsteroid" returnType="void" visibility="public">
+          <Argument type="Asteroid" name="asteroid"/>
+        </Method>
+        <Method name="addPiece" returnType="void" visibility="package">
+          <Argument type="GamePiece" name="piece"/>
+        </Method>
+        <Method name="onUpdate" returnType="void" visibility="public"/>
+        <Method name="generateAsteroids" returnType="void" visibility="public"/>
+        <Method name="checkCollision" returnType="void" visibility="public"/>
+        <Method name="endGame" returnType="void" visibility="public"/>
+        <Method name="redraw" returnType="void" visibility="public">
+          <Argument type="GamePiece" name="piece"/>
+        </Method>
+        <Method name="handle" returnType="void" visibility="public">
+          <Argument type="KeyEvent" name="event"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="asteroidMain" package="SceneBuilder" visibility="public" xPosition="435.0" yPosition="886.0">
+      <Fields>
+        <Field name="ship" type="Ship" visibility="private"/>
+        <Field name="img" type="ImageView" visibility="private"/>
+        <Field name="theStage" type="Stage" visibility="package"/>
+        <Field name="mainButtons" type="HBox" visibility="package"/>
+        <Field name="optionButtons" type="HBox" visibility="package"/>
+        <Field name="ok" type="Button" visibility="package"/>
+        <Field name="optionsButton" type="Button" visibility="package"/>
+        <Field name="quit" type="Button" visibility="package"/>
+        <Field name="backBtn" type="Button" visibility="package"/>
+        <Field name="optionQuit" type="Button" visibility="package"/>
+        <Field name="playAgain" type="Button" visibility="package"/>
+        <Field name="endQuit" type="Button" visibility="package"/>
+        <Field name="goToMain" type="Button" visibility="package"/>
+        <Field name="mainScene" type="Scene" visibility="package"/>
+        <Field name="optionsScene" type="Scene" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="start" returnType="void" visibility="public">
+          <Argument type="Stage" name="primaryStage"/>
+        </Method>
+        <Method name="ButtonClicked" returnType="void" visibility="public">
+          <Argument type="ActionEvent" name="e"/>
+        </Method>
+        <Method name="ButtonClickedInner" returnType="void" visibility="public">
+          <Argument type="ActionEvent" name="x"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="SceneBuilder.asteroidModel" target="Models.Bullet" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ship" source="SceneBuilder.asteroidController" target="Models.Ship" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="SceneBuilder.asteroidController" target="Models.GamePiece" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="bullets" source="SceneBuilder.asteroidController" target="Models.Bullet" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Bullet&gt;"/>
+    <IsRelation name="is" source="Models.Ship" target="Models.GamePiece"/>
+    <UseRelation source="SceneBuilder.asteroidController" target="Models.Asteroid" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ship" source="SceneBuilder.asteroidMain" target="Models.Ship" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Models.Ship" target="Models.Bullet" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="SceneBuilder.asteroidController" target="SceneBuilder.asteroidModel" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Models.Asteroid" target="Models.GamePiece"/>
+    <IsRelation name="is" source="Models.Bullet" target="Models.GamePiece"/>
+    <HasRelation name="asteroids" source="SceneBuilder.asteroidController" target="Models.Asteroid" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Asteroid&gt;"/>
+    <UseRelation source="SceneBuilder.asteroidController" target="Models.Bullet" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="ship" source="SceneBuilder.asteroidModel" target="Models.Ship" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

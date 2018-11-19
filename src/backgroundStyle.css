@@ -1,0 +1,8 @@
+.root{
+    -fx-font-size: 14pt;
+    -fx-font-family: "Tahoma";
+    -fx-base: #DFB951;
+    -fx-background: "Black";
+  
+    -fx-focus-color: #B6A678;
+}

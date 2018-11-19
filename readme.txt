@@ -1,0 +1,4 @@
+Team Name: Scrumdog Millionaires
+Team Members: Andrew Gray, Dan Kershner, John Piermatteo, Dylan Zucker
+
+For our final project, we decided to make a more contemporary version of the classic game Asteroids. In Asteroids, the player controls a ship that can move forward, turn, and has an acceleration value that increases when the move button is held down. The object of the game is to not get hit by any asteroids, which is accomplished by shooting and destroying them. There are three possible sizes that an asteroid can have, and if the asteroid doesn't have the smallest size value, it splits into two asteroids of the next smallest size when it is destroyed. The game ends when the ship is hit by an asteroid. All of the java files are contianed in the src folder, and the main program is contained in the SceneBuilder folder, in asteroidMain.java.
